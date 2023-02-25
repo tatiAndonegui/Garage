@@ -7,34 +7,54 @@ public class Garage {
     private double wheelChangePrice;
     private ArrayList<Vehicles> vehicles;
 
-    public void vehicleEntry(ArrayList<Vehicles> vehicles){
-        this.vehicles = vehicles;
-    }
-    public void vehicleExit(ArrayList<Vehicles> vehicles){
-        this.vehicles = vehicles;
-    }
+    public void vehicleEntry(Vehicles vehicle){
+        if (currentAumountOfVehicles == maximunSizeOfTheGarage){
+            System.out.println("El garage esta lleno");
+        } else {
+            this.vehicles.add(vehicle);
+            currentAumountOfVehicles = currentAumountOfVehicles + 1;
+        }
 
-    public double getWheelChangePrice() {
-        return wheelChangePrice;
     }
-
+    public void vehicleExit(Vehicles vehicle){
+        if (currentAumountOfVehicles == 0){
+            System.out.println("El garage esta vacio");
+        } else {
+            this.vehicles.remove(vehicle);
+            currentAumountOfVehicles = currentAumountOfVehicles - 1;
+            //aca va el sorteo del mundial cuando retira vehiculo
+        }
+    }
     public void setWheelChangePrice(double wheelChangePrice) {
         this.wheelChangePrice = wheelChangePrice;
     }
-
-    public int getMaximunSizeOfTheGarage() {
-        return maximunSizeOfTheGarage;
+    public double getWheelChangePrice() {
+        return wheelChangePrice;
     }
 
     public void setMaximunSizeOfTheGarage(int maximunSizeOfTheGarage) {
         this.maximunSizeOfTheGarage = maximunSizeOfTheGarage;
     }
+    public int getMaximunSizeOfTheGarage() {
+        return maximunSizeOfTheGarage;
+    }
+
 
     public int getCurrentAumountOfVehicles() {
         return currentAumountOfVehicles;
     }
 
-    public void getTotalPrice(ArrayList<Vehicles> vehicles){
-        this.vehicles = vehicles;
+    public double getTotalPrice(Vehicles vehicle){
+
+       //vehicle.getAmountWheels  2 - 4
+        return 4 * wheelChangePrice;
     }
+
+   public double getAverageKilometers(ArrayList<Vehicles> vehicles){
+       double kilometerTotal =0;
+       for (int i = 0; i < vehicles.size(); i++) {
+           kilometerTotal = kilometerTotal + vehicles.get(i).getKilometers();
+       }
+       return kilometerTotal /vehicles.size();
+   }
 }
