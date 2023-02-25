@@ -1,3 +1,7 @@
+package sistemaGarage;
+
+import vehiculos.Vehicles;
+
 import java.util.ArrayList;
 
 public class Garage {
@@ -45,9 +49,7 @@ public class Garage {
     }
 
     public double getTotalPrice(Vehicles vehicle){
-
-       //vehicle.getAmountWheels  2 - 4
-        return 4 * wheelChangePrice;
+        return vehicle.getTotalWheels() * wheelChangePrice;
     }
 
    public double getAverageKilometers(ArrayList<Vehicles> vehicles){
