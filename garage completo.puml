@@ -1,0 +1,42 @@
+@startuml
+class vehiculos.Car {
+- int numberOfDoors
++ int getNumberOfDoors()
++ void setNumberOfDoors(int)
+}
+class vehiculos.Vehicles {
+- String brand
+- int kilometers
+- int totalWheels
++ void setBrand(String)
++ String getBrand()
++ void setKilometers(int)
++ int getKilometers()
++ void setTotalWheels(int)
++ int getTotalWheels()
+}
+class vehiculos.Motorcycle {
+- String displacement
++ String getDisplacement()
++ void setDisplacement(String)
+}
+class sistemaGarage.Garage {
+- int maximunSizeOfTheGarage
+- int currentAumountOfVehicles
+- double wheelChangePrice
+- ArrayList<Vehicles> vehicles
++ void vehicleEntry(Vehicles)
++ void vehicleExit(Vehicles)
++ void setWheelChangePrice(double)
++ double getWheelChangePrice()
++ void setMaximunSizeOfTheGarage(int)
++ int getMaximunSizeOfTheGarage()
++ int getCurrentAumountOfVehicles()
++ double getTotalPrice(Vehicles)
++ double getAverageKilometers(ArrayList<Vehicles>)
+}
+
+
+sistemaGarage.Garage <|-- vehiculos.Car
+sistemaGarage.Garage <|-- vehiculos.Motorcycle
+@enduml
